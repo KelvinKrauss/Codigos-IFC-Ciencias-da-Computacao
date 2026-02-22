@@ -1,0 +1,6 @@
+5.1 Quais são essas classes?
+R = .container, .container-fluid
+5.2
+R = container - classe que cria um conteiner de largura fixa e responsiva, a sua largura máxima muda de acordo com os breakpoints predefinidos do bootstrap
+
+container-fluid: essa classe cria um conteiner de largura total, então ele vai ocupar a tela toda.

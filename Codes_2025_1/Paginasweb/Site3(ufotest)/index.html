@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UFOs animados</title>
+<style>
+  body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+
+  #area {
+    position: relative;
+    width: 100vw;
+    height: 200px;
+    overflow: hidden;
+    background: black;
+  }
+
+  .ufo {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    background: linear-gradient(135deg, #4CAF50 0%, #087f23 100%);
+    border-radius: 40px 40px 20px 20px;
+    box-shadow: 0 0 15px #4CAF50;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  #ufo2 {
+    background: linear-gradient(135deg, #2196F3 0%, #0b4da0 100%);
+    box-shadow: 0 0 15px #2196F3;
+    top: 80%;
+  }
+
+  .controls {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+  }
+
+  select {
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+</style>
+</head>
+<body>
+  <h1 style="color: white; text-align: center;">Teste UFO Simples</h1>
+
+  <div class="controls">
+    <label for="velocidade">Velocidade:</label>
+    <select id="velocidade">
+      <option value="1">Lento</option>
+      <option value="3" selected>Médio</option>
+      <option value="6">Rápido</option>
+    </select>
+  </div>
+
+  <div id="area">
+    <div class="ufo" id="ufo1"></div>
+    <div class="ufo" id="ufo2"></div>
+  </div>
+
+  <script>
+    const ufo1 = document.getElementById("ufo1");
+    const ufo2 = document.getElementById("ufo2");
+    const velocidadeSelect = document.getElementById("velocidade");
+
+    let larguraArea = window.innerWidth;
+    let larguraUfo = ufo1.offsetWidth;
+
+    let pos1 = 0;
+    let pos2 = larguraArea - larguraUfo;
+
+    let direcao1 = 1; // direita
+    let direcao2 = -1; // esquerda
+
+    let velocidade = Number(velocidadeSelect.value);
+
+    velocidadeSelect.addEventListener("change", () => {
+      velocidade = Number(velocidadeSelect.value);
+    });
+
+    function animar() {
+      larguraArea = window.innerWidth; // Atualiza em resize
+
+      pos1 += direcao1 * velocidade;
+      pos2 += direcao2 * velocidade;
+
+      if (pos1 + larguraUfo >= larguraArea) direcao1 = -1;
+      if (pos1 <= 0) direcao1 = 1;
+
+      if (pos2 <= 0) direcao2 = 1;
+      if (pos2 + larguraUfo >= larguraArea) direcao2 = -1;
+
+      ufo1.style.left = pos1 + "px";
+      ufo2.style.left = pos2 + "px";
+
+      requestAnimationFrame(animar);
+    }
+
+    animar();
+
+    window.addEventListener("resize", () => {
+      larguraArea = window.innerWidth;
+    });
+  </script>
+</body>
+</html>

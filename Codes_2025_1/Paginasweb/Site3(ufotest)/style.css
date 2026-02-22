@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+#area {
+    position: relative;
+    width: 100vw;
+    height: 200px;
+    overflow: hidden;
+    background: black;
+}
+
+.ufo {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    background: linear-gradient(135deg, #4CAF50 0%, #087f23 100%);
+    border-radius: 40px 40px 20px 20px;
+    box-shadow: 0 0 15px #4CAF50;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Diferenciar o segundo UFO com cor */
+#ufo2 {
+    background: linear-gradient(135deg, #2196F3 0%, #0b4da0 100%);
+    box-shadow: 0 0 15px #2196F3;
+    top: 80%;
+}
