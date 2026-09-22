@@ -1,6 +1,7 @@
 import pygame
 import random
 import sys
+import os
 
 
 pygame.init()
@@ -20,15 +21,15 @@ GRAVITY = 1
 PLAYER_SPEED = 5
 JUMP_FORCE = 15
 
-image_path = r"C:\Users\kelvi\OneDrive\Área de Trabalho\IFC\Códigos ;-;\Códigos 2025-1\joguineos\IMAGENS JOGO 2"
+image_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "IMAGENS JOGO 2")
 
-background_image = pygame.image.load(f"{image_path}\\bg.png").convert()
+background_image = pygame.image.load(os.path.join(image_path, "bg.png")).convert()
 background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
 
-menu_background = pygame.image.load(f"{image_path}\\menu_background.png").convert()
+menu_background = pygame.image.load(os.path.join(image_path, "menu_background.png")).convert()
 menu_background = pygame.transform.scale(menu_background, (WIDTH, HEIGHT))
 
-rank_icon = pygame.image.load(f"{image_path}\\rank_icon.png").convert_alpha()
+rank_icon = pygame.image.load(os.path.join(image_path, "rank_icon.png")).convert_alpha()
 rank_icon = pygame.transform.scale(rank_icon, (60, 60))
 
 font = pygame.font.SysFont(None, 36)
